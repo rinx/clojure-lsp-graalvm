@@ -19,4 +19,5 @@ jobs:
     - name: tag and push to GitHub package registry
       run: |
         echo "Push to GitHub package registry"
+        docker tag clojure-lsp-graalvm docker.pkg.github.com/rinx/dotfiles/devenv:latest
         docker push docker.pkg.github.com/rinx/clojure-lsp-graalvm/clojure-lsp-graalvm:latest
