@@ -22,6 +22,7 @@ RUN cd / \
         --report-unsupported-elements-at-runtime \
         --initialize-at-build-time \
         --static \
-        -J-Xmx3g
+        -J-Xms1g \
+        -J-Xmx8g
 
 ENTRYPOINT ["/clojure-lsp/clojure-lsp"]
