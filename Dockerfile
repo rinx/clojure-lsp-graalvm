@@ -25,4 +25,8 @@ RUN cd / \
         -J-Xms1g \
         -J-Xmx8g
 
-ENTRYPOINT ["/clojure-lsp/clojure-lsp"]
+FROM scratch
+
+COPY --from=graalvm-ce /clojure-lsp/clojure-lsp /clojure-lsp
+
+ENTRYPOINT ["/clojure-lsp"]
