@@ -26,7 +26,7 @@ RUN cd / \
         --initialize-at-build-time \
         --static \
         -J-Xms4g \
-        -J-Xmx6g
+        -J-Xmx16g
 
 FROM scratch
 
