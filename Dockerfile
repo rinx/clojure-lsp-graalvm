@@ -9,8 +9,11 @@ RUN cd / \
     && git clone --depth=1 https://github.com/snoe/clojure-lsp.git \
     && cd clojure-lsp \
     && lein uberjar \
+    && mkdir native-image \
+    && mv target/clojure-lsp-0.1.0-SNAPSHOT-standalone.jar native-image/ \
+    && cd native-image \
     && native-image \
-        -jar target/clojure-lsp-0.1.0-SNAPSHOT-standalone.jar \
+        -jar clojure-lsp-0.1.0-SNAPSHOT-standalone.jar \
         -H:Name=clojure-lsp \
         -H:+ReportExceptionStackTraces \
         -J-Dclojure.spec.skip-macros=true \
@@ -22,11 +25,11 @@ RUN cd / \
         --report-unsupported-elements-at-runtime \
         --initialize-at-build-time \
         --static \
-        -J-Xms1g \
-        -J-Xmx8g
+        -J-Xms6g \
+        -J-Xmx7g
 
 FROM scratch
 
-COPY --from=graalvm-ce /clojure-lsp/clojure-lsp /clojure-lsp
+COPY --from=graalvm-ce /clojure-lsp/native-image/clojure-lsp /clojure-lsp
 
 ENTRYPOINT ["/clojure-lsp"]
