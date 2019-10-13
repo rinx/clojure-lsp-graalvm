@@ -25,8 +25,8 @@ RUN cd / \
         --report-unsupported-elements-at-runtime \
         --initialize-at-build-time \
         --static \
-        -J-Xms6g \
-        -J-Xmx7g
+        -J-Xms4g \
+        -J-Xmx6g
 
 FROM scratch
 
